@@ -1,5 +1,18 @@
 # Arbitrary Code Execution (ACE) in Crash Bash NTSC-J
 
+<div style="display: flex; justify-content: center; gap: 20px;">
+    <a href="https://youtu.be/B50j4zk_VxI?t=137">
+        <img src="https://github.com/user-attachments/assets/963fc4c4-9349-4f5f-8ada-1bba48863712" width="45%">
+    </a>
+    <a href="https://youtu.be/XHBzD3LvANY?t=72s">
+        <img src="https://github.com/user-attachments/assets/143a57bc-9544-45be-824b-6413cc582778" width="45%">
+    </a>
+</div>
+
+**Click an image to watch on YouTube**
+
+
+## Background Info
 _Crash Bash_ is party video game released in 2000 for the Playstation 1. The game is comprised of a series of minigame challenges interleaved with boss fights. To this day, the game continues to be played by speedrunners who compete to beat the game as fast as possible as documented on [speedrun.com](https://www.speedrun.com/crashbash). Two main speedruning categories exist: `Any%` and `Any% No Memory Manipulation`. The main difference between these two categories is the allowance of a exploit that allows the runner to modify game code and/or data to complete the game faster than would otherwise be possible. This repo attempts to explain how this exploit works, investigates what code and data can be modified, and provides tools to further this endeavor.
 
 The most interesting result of this research is a __human-feasible, hardware-verified, method for Arbitrary Code Execution (ACE)__ (see [Links](#links) section for video evidence). This technique relies on a series of roughly a couple hundred precise D-Pad inputs to modify the game's code allowing the player to skip to the final credits. This route does not rely on any pixel prefect setups nor time sensitive inputs. It does, however, require multiple buttons (up to all 4) on the D-Pad to be pressed simultaneously on the same frame. Implemented as a Tool Assisted Speedrun (TAS), the route takes roughly __35 seconds__ RTA to complete (from the player spawning in the Warp Room until the credits begin to roll).
@@ -18,6 +31,20 @@ When the menu is re-entered, the cursor is again navigated off the screen. Speci
 
 Once characters can be written to a new region, the games memory is further changed. This change tricks the game into running the code that was written in the previous section; the payload. Once the payload has been run, the collectable check is removed and the player can safely exit the "Enter Name" menu. From there, the player can simply walk to the Warp Room selector and select Warp Room 5. The first time the player goes to Warp Room 5 the end credits are played. This marks the end of the run.
 
+<table>
+  <tr>
+    <!-- Left: Single Large Image -->
+    <td>
+      <img src="https://github.com/user-attachments/assets/83a3be1b-cf95-4164-9368-0dd8d785d4c4" width="400">
+    </td>
+    <!-- Right: Two Stacked Images -->
+    <td>
+      <img src="https://github.com/user-attachments/assets/cf8f0852-20f9-41d2-9feb-508e5cf0980a" width="700"><br>
+      <img src="https://github.com/user-attachments/assets/c256c004-1724-4974-a73f-dc3c55ea3491" width="700">
+    </td>
+  </tr>
+</table>
+
 ## Links
 
 The rest of this repo contains the research and tools used to design and implement the aforementioned TAS
@@ -25,3 +52,6 @@ The rest of this repo contains the research and tools used to design and impleme
 * [Tools](./tools/) - The tools used to research this memory manipulation exploit and for generating the TAS
 * [Annotated TAS Route (YouTube)](https://youtu.be/XHBzD3LvANY) - A video showing the TAS inputs and various memory regions
 * [Hardware Verification (YouTube)](https://youtu.be/B50j4zk_VxI) - A video demonstrating the TAS working on an original PS1 using a modified controller
+
+
+
